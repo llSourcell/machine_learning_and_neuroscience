@@ -1,6 +1,8 @@
 SpectraVis
 ==========
 
+This is the code from [this](https://youtu.be/e_BOJS1BLj8) video on Youtube by Siraj Raval.
+
 An interactive network visualization tool for exploring [functional brain connectivity](http://www.scholarpedia.org/article/Brain_connectivity) using [d3.js](http://d3js.org/). See [this](http://ericdeno.com/research/SpectraVis/) for an example of SpectraVis in action.
 
 ![](./SpectraVis-Demo.gif)
@@ -42,3 +44,8 @@ Push to your fork and submit a pull request to the `develop` branch.
 
 ## License
 [GPL-v2](http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
+
+
+## Credits
+
+The credits for this code go to [Neurophysvis](https://github.com/NeurophysVis/SpectraVis). I've merely created a wrapper to get people started.
