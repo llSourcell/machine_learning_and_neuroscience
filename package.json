@@ -1,0 +1,58 @@
+{
+  "name": "spectravis",
+  "version": "1.1.0",
+  "description": "An interactive web-based neuroscience app for analyzing task-related functional networks over time and frequency.",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "bower cache clean && bower install && gulp",
+    "prepublish": "gulp build && gulp zip"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edeno/SpectraVis.git"
+  },
+  "keywords": [
+    "neuroscience",
+    "spectra",
+    "coherence",
+    "correlation",
+    "networks",
+    "functional connectivity"
+  ],
+  "author": {
+    "name": "Eric Denovellis",
+    "url": "http://ericdeno.com"
+  },
+  "contributors": [
+    {
+      "name": "Emily Stephen",
+      "url": "http://emilystephen.com/"
+    }
+  ],
+  "dependencies": {
+    "d3-save-svg": "0.0.2"
+  },
+  "devDependencies": {
+    "bower": "^1.4.1",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-jsonminify": "^1.0.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-streamify": "0.0.5",
+    "gulp-uglify": "^1.2.0",
+    "gulp-util": "^3.0.6",
+    "gulp-watch": "^4.3.5",
+    "gulp-zip": "^3.0.2",
+    "imagemin-pngquant": "^4.1.2"
+  },
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/edeno/SpectraVis/issues"
+  },
+  "homepage": "https://github.com/edeno/SpectraVis#readme"
+}

@@ -1,0 +1,31 @@
+{
+  "name": "SpectraVis",
+  "version": "0.1.0",
+  "description": "An interactive visualization tool for spectra, coherences, corrrelations, and associated networks",
+  "keywords": [
+    "neuroscience",
+    "spectra",
+    "coherence",
+    "correlation",
+    "networks"
+  ],
+  "authors": [
+    "Eric Denovellis"
+  ],
+  "license": "GPL-2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "d3": "~3.5.10",
+    "queue-async": "~1.0.7",
+    "colorbrewer": "~1.0.0",
+    "spin.js": "~2.3.2",
+    "d3-legend": "~1.6.0"
+  }
+}

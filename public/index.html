@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SpectraVis</title>
+  <!-- Bootstrap -->
+  <link href="css/main.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Title Panel -->
+    <div class="row" id="TitlePanel">
+      <h3>SpectraVis</h3>
+    </div>
+    <div id="export-link-help" class="row btn-group btn-group-xs" role="group">
+      <button type="button" class="btn btn-default" id="link" title="Link to this view of the visualization">
+        <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
+        Link
+      </button>
+      <div id="permalink">
+        <button type="button" class="close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <label>Copy the text below or bookmark this <a class="bookmark" href="">link</a> to get back to this view of SpectraVis.</label>
+        <textarea class="copy-link" spellcheck="false"></textarea>
+      </div>
+      <button type="button" class="btn btn-default" id="export" title="Export a screenshot of the visualization">
+        <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+        Export
+      </button>
+      <button type="button" class="btn btn-default" id="help-button" aria-label="Help" title="Display Help">
+        <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+        Help
+      </button>
+    </div>
+    <div class="row">
+      <!-- Brain Panel -->
+      <div class="col-md-9 text-center" id="NetworkPanel"></div>
+      <!-- Sidebar -->
+      <div class="col-md-3" id="sidebar">
+        <div id="SubjectPanel" class="row bottom-buffer">
+          <label class="col-md-6">Subject</label>
+          <div class="dropdown col-md-6" id="SubjectDropdown">
+            <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="subjectButton" data-toggle="dropdown">
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="subjectDropdown"></ul>
+          </div>
+        </div>
+        <div id="EdgeStatTypePanel" class="row bottom-buffer">
+          <label class="col-md-6">Edge Statistic</label>
+          <div class="dropdown col-md-6" id="EdgeStatTypeDropdown">
+            <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="EdgeStatTypeButton" data-toggle="dropdown">
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="EdgeStatTypeDropdown">
+            </ul>
+          </div>
+        </div>
+        <div id="EdgeFilterPanel" class="row bottom-buffer">
+          <label class="col-md-6">Edge Filter</label>
+          <div class="dropdown col-md-6" id="EdgeFilterDropdown">
+            <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="EdgeFilterButton" data-toggle="dropdown">
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="EdgeFilterDropdown">
+              <li role="presentation" id="All"><a role="menuitem" tabindex="-1">All Edges</a></li>
+              <li role="presentation" id="Within"><a role="menuitem" tabindex="-1">Within Area Edges</a></li>
+              <li role="presentation" id="Between"><a role="menuitem" tabindex="-1">Between Area Edges</a></li>
+            </ul>
+          </div>
+        </div>
+        <div id="NetworkViewPanel" class="row bottom-buffer">
+          <label for="networkRadio" class="col-md-6">Network View</label>
+          <form class="col-md-6 text-center">
+            <input type="radio" id="anatomicalRadio" value="Anatomical" checked>
+            <label for="networkRadio">Anatomical</label>
+            <input type="radio" id="topologicalRadio" value="Topological">
+            <label for="networkRadio">Topological</label>
+          </form>
+        </div>
+        <div id="TimeSliderPanel" class="row bottom-buffer">
+          <label for="timeSlider" class="col-md-6">Time</label>
+          <form class="col-md-6">
+            <input type="range" id="timeSlider">
+          </form>
+          <output id="timeSlider-value" class="col-md-6 pull-right"></output>
+        </div>
+        <div id="FreqSliderPanel" class="row bottom-buffer">
+          <label for="freqSlider" class="col-md-6">Frequency</label>
+          <form class="col-md-6">
+            <input type="range" id="freqSlider">
+          </form>
+          <output id="freqSlider-value" class="col-md-6 pull-right"></output>
+        </div>
+        <div id="PlayButtonPanel" class="row bottom-buffer">
+          <button class="btn btn-default btn-sm col-md-6" type="button" id="playButton">
+            Play
+          </button>
+          <button class="btn btn-default btn-sm col-md-6" type="button" id="resetButton">
+            Reset
+          </button>
+        </div>
+        <!-- Legend Panel -->
+        <div id="legendKey" class="row">
+          <div class="col-md-12" id="anatomicalLegend"></div>
+          <div class="col-md-12" id="edgeStatLegend"></div>
+          <div class="col-md-12" id="spectraLegend"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Heatmap Panel -->
+    <div class="row" id="heatmapRow">
+      <div class="col-md-4" id="SpectraCh1Panel"></div>
+      <div class="col-md-4" id="EdgeStatPanel"></div>
+      <div class="col-md-4" id="SpectraCh2Panel"></div>
+    </div>
+    <!-- Time Slice Panel -->
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4" id="timeSlice"></div>
+    </div>
+  </div>
+  <!-- end container div-->
+  <div id="overlay">
+    <div id="helpToolTip">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h4>How to Use SpectraVis</h4>
+      <div id="toolTip-content">
+        <p>
+          <strong>WARNING</strong>: This visualization may take a long time to load due to some large files. Please be patient on the first load.</p>
+        <p>
+          <strong>Click</strong> on any two nodes or the edge between them to load the spectra and coherences/correlations between those two nodes. </p>
+        <p>
+          <strong>Mouse over</strong> the spectra or cohereograms/correlograms to see the network at that time and/or frequency </p>
+        <p>
+          <strong>Click on</strong> the spectra or cohereograms/correlograms to freeze the network at a particular time and frequency value</p>
+        <br>
+        <p>
+          <strong>Edge Filter</strong> allows you to look at only edges between areas, edges within areas, or all edges</p>
+        <p>
+          <strong>Network View</strong> allows you to toggle between viewing the nodes in their anatomical location or in a layout designed to give you a sense of the structure of the network (topological) </p>
+      </div>
+    </div>
+  </div>
+  <script src="js/vendor.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Extract parameters from the browser
+    var extractedParams = [];
+    var query = window.location.search.substring(1);
+    if (query !== "") {
+      var vars = query.split("&");
+      vars.forEach(function(v) {
+        var p = v.split("=");
+        var isUndefined = (typeof(p[1]) === 'undefined');
+        var isEmpty = (p[1] === "");
+        if (isUndefined || isEmpty) {
+          extractedParams[p[0]] = null;
+        } else {
+          extractedParams[p[0]] = decodeURI(p[1]);
+        }
+      });
+    }
+    // Initialize visualization
+    spectraVis.init(extractedParams);
+  </script>
+</body>
+
+</html>
